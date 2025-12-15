@@ -1,3 +1,11 @@
+const bgm = document.getElementById("bgm");
+
+document.addEventListener("keydown", () => {
+    if (bgm.paused) {
+        bgm.volume = 0.3;
+        bgm.play();
+    }
+});
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -81,3 +89,4 @@ function directionControl(event){
 }
 
 let game = setInterval(draw, 100);
+
