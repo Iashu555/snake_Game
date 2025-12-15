@@ -1,11 +1,16 @@
 const bgm = document.getElementById("bgm");
 
+let musicStarted = false;
 document.addEventListener("keydown", () => {
-    if (bgm.paused) {
+    if (!musicStarted) {
         bgm.volume = 0.3;
-        bgm.play();
+        bgm.play().catch(error => {
+            console.log("Audio play error:", error);
+        });
+        musicStarted = true;
     }
 });
+
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -89,4 +94,5 @@ function directionControl(event){
 }
 
 let game = setInterval(draw, 100);
+
 
